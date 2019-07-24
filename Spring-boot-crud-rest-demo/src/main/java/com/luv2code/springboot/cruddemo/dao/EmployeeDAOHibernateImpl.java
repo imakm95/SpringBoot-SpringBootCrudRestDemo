@@ -29,6 +29,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
+		System.out.println("GET ALL - " +currentSession.hashCode());
 		
 		// create a query
 		Query<Employee> theQuery =
@@ -47,6 +48,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
+		System.out.println("GET ID - " +currentSession.hashCode());
 		
 		// get the employee
 		Employee theEmployee =
@@ -65,6 +67,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
+		System.out.println("SAVE/UPDATE - " +currentSession.hashCode());
 		
 		// save employee
 		currentSession.saveOrUpdate(theEmployee);
@@ -76,6 +79,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
+		System.out.println("DELETE - " +currentSession.hashCode());
 				
 		// delete object with primary key
 		Query theQuery = 
