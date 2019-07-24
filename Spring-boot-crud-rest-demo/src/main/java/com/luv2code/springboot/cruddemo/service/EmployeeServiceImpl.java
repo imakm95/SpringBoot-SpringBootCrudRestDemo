@@ -13,19 +13,21 @@ import com.luv2code.springboot.cruddemo.dao.EmployeeRepository;
 import com.luv2code.springboot.cruddemo.entity.Employee;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
+
 	//private EmployeeDAO employeeDAO;
 	private EmployeeRepository employeeRepository;
 	
 	/*@Autowired
-	public EmployeeServiceImpl(EmployeeDAO theEmployeeDAO) {
+	//public EmployeeServiceImpl(@Qualifier("employeeDAOJpaImpl") EmployeeDAO theEmployeeDAO) {
+	public EmployeeServiceImpl(@Qualifier("employeeDAOHibernateImpl") EmployeeDAO theEmployeeDAO) {
 		employeeDAO = theEmployeeDAO;
 	}*/
 	
 	@Autowired
 	public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository) {
 		employeeRepository = theEmployeeRepository;
-	}
+	}	
 	
 	@Override
 	//@Transactional
@@ -50,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-//	@Transactional
+	//@Transactional
 	public void save(Employee theEmployee) {
 		//employeeDAO.save(theEmployee);
 		 employeeRepository.save(theEmployee);
@@ -59,13 +61,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	//@Transactional
 	public void deleteById(Integer theId) {
+		//employeeDAO.deleteById(theId);
 		employeeRepository.deleteById(theId);
 	}
 
 }
-
-
-
-
-
-
